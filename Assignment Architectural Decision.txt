@@ -1,0 +1,135 @@
+# Assignment: Architectural Decisions
+
+## Architectural Decision Record (ADR) for Food Ordering Mobile App
+
+### Scenario: Mobile app for ordering food from local restaurants for delivery or pickup.
+### Date: 9th October 2023
+
+#
+
+
+
+1. Native, web, or hybrid app
+
+* Decision: Native App
+
+* Completeness: This decision provides a seamless user experience, utilizes GPS capabilities for location tracking, and offers real-time order tracking.
+
+* Clarity: Picking a native app clarifies our intent to make a device capable and offer a better user experience.
+
+* Feasibility: With the current team abilities and the widespread resources available for native app development, this choice is achievable. 
+
+* Scalability: When building a Native apps efficiently, they can leverage device capabilities to the fullest.
+
+* Maintainability: Native apps can be maintained with updates to each platform, allowing for the full utilization of the latest features and security protocols.
+
+* Security: Native apps generally offer better security features by directly interacting with device hardware and OS-specific security measures.
+
+#
+
+2. UI Framework
+
+* Decision: For iOS: Swift with SwiftUI. For Android: Kotlin with Jetpack Compose.
+
+* Completeness: Both frameworks offer full capabilities to create a rich and intuitive user interface aligned with the scenario's requirements.
+
+* Clarity: By selecting platform-specific frameworks, we ensure the best user experience.
+
+* Feasibility: Both frameworks are widely adopted and have extensive resources, making development feasible.
+
+* Scalability: Both frameworks are designed to handle apps of varying complexity and ensure future feature additions are smooth.
+
+* Maintainability: Both frameworks are backed by extensive communities, making it easier to maintain the app in the long run.
+
+* Security: As these are official frameworks for their respective platforms, they fixed the security protocols set by Apple and Google.
+
+#
+
+3. Backend language
+
+* Decision: Node.js with Express.js.
+
+* Completeness: Node.js supports real-time capabilities perfect for tracking orders and updating menu data
+
+* Clarity: Node.js with Express.js offers a clear approach to backend development, providing robust API endpoints efficiently.
+
+* Feasibility: Given the widespread use of Node.js and the community support, it is feasible to use this for backend development.
+
+* Scalability: Node.js is asynchronous, allowing it to handle multiple requests at the same time, making it scalable for increasing users.
+
+* Maintainability: With a huge community and lots of recent updates, maintaining a Node.js backend is straightforward.
+
+* Security: With proper configuration and middleware like Helmet, Express.js on Node can be made very secure.
+
+#
+
+4. Permissions
+
+* Decision: Location (GPS) and Notifications.
+
+* Completeness: The requirement to track user location for delivery and provide real-time order updates.
+Clarity: Explicitly requesting only necessary permissions communicates and purpose to the user.
+
+* Feasibility: Most mobile devices support GPS tracking and push notifications, making this feasible.
+
+* Scalability: Permissions are a one-time grant and don't impact scalability.
+
+* Maintainability: As the app evolves, permissions can be updated. However, caution should be exercised not to alienate users with excessive permissions.
+
+* Security: Asking for minimal permissions ensures user trust. Location data, in particular, should be encrypted and securely stored.
+
+#
+
+5. Data Storage
+
+* Decision: DB for user data, order history, reviews, and AWS S3 for images/assets.
+
+* Completeness: DB's NoSQL structure can house diverse data types, including user profiles, reviews, and order histories, while S3 reliably hosts static assets.
+
+* Clarity: DB is flexible and is unstructured data; S3 for assets. A clear division of responsibilities.
+
+* Feasibility: Both platforms offer robust cloud solutions and are feasible for the current scenario.
+
+* Scalability: DB can handle a large amount of data, and S3 has a limited storage, catering to app growth.
+
+* Maintainability: Both platforms have comprehensive documentation, community support, widely adopted, and aiding maintenance.
+
+* Security: DB Atlas provides built-in security features, and AWS S3 has amazing access controls and encryption.
+
+#
+
+6. Additional frameworks or technology stacks
+
+* Decision: Stripe and PayPal for payment, Firebase for user and notifications, GraphQL for restaurant menu data fetching.
+
+* Completeness: This comprehensive stack addresses payment, user management, real-time data fetching.
+
+* Clarity: Each tool has a clear role - Stripe and PayPal for transactions, Firebase for user and notification management, and GraphQL for efficient data operations.
+
+* Feasibility: These technologies are industry leaders with extensive documentation, making integration and development feasible.
+
+* Scalability: These platforms are built to handle growth, supporting both startup apps and large-scale enterprise functions.
+
+* Maintainability: Being industry standards, they receive regular updates and have communities and maintenance.
+
+* Security: All platforms need security. Stripe is PCI compliant, and Firebase offers secure authentication methods.
+
+
+#
+#
+
+
+
+|Architectural Decision : Choice                                  |Rationale      |
+| ----------------------------------                              |:-------------:|
+| Native, web, or hybrid app : Native App                         | This decision provides a seamless user experience, utilizes GPS capabilities for location tracking, and offers real-time order tracking     |
+| UI Framework : iOS: Swift with SwiftUI, Android: Kotlin with Jetpack Compose                                                                            | Prioritizing user-friendliness, these frameworks will allow for the creation of intuitive and modern UIs.     |
+| Backend language : Node.js with Express.js                      | Node.js offers real-time capabilities which is perfect for tracking orders and updating menu data.     |
+| Permissions : Location (GPS) and Notifications                  | Location is vital for providing user-specific restaurant options and determining delivery logistics. Notifications will ensure users are updated about their order statuses.     |
+| Data Storage : DB for data; AWS S3 for images/assets            | DB allows for flexible schema which can adapt as the app grows. It's also suited for handling vast amounts of unstructured data, like reviews.     |
+| Additional frameworks or technology stacks : Stripe, PayPal, Firebase, GraphQL                                                                          | Stripe and PayPal are trusted payment gateways with extensive documentation and support. Firebase offers a seamless integration for user management and push notifications, decreasing development time. GraphQL will ensure efficient fetching of restaurant menu data.     |
+ 
+
+
+#
+#
